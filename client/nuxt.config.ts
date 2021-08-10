@@ -45,7 +45,7 @@ const config: NuxtConfig = {
           secondary: '#181C43',
           info: '#1E1A3E',
           warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
+          error: '#FF6683',
           success: colors.green.accent3,
           background: '#FAF3F3'
         }

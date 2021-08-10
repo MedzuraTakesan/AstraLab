@@ -5,9 +5,13 @@
       value="Sign Up"
     />
     <astra-form
+      v-model="inputs"
       class="signUp--offset"
-      :inputs="inputs"
-    />
+    >
+      <template #button>
+        Sign Up
+      </template>
+    </astra-form>
   </div>
 </template>
 <script lang="ts">
@@ -23,6 +27,7 @@ export default class index extends Vue {
     {
       label: 'Full name',
       required: true,
+      type: 'fullName',
       value: ''
     },
     {
@@ -40,6 +45,7 @@ export default class index extends Vue {
     },
     {
       label: 'Repeat password',
+      type: 'password',
       required: true,
       value: ''
     }

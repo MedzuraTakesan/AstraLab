@@ -3,11 +3,15 @@ export type validator = ((v: string) => true | string)[]
 type TValidationRules = {
   password: validator,
   text: validator,
+  fullName: validator,
   email: validator
 }
 
 export const validationRules: TValidationRules = {
   text: [],
+  fullName: [
+    v => !!v || 'Full is required'
+  ],
   password: [
     v => !!v || 'Password is required',
     v => (v && v.length >= 8) || 'Password must have 8+ characters',

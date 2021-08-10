@@ -1,6 +1,14 @@
 <template>
-  <v-btn :class="btnClass" :color="color" :block="block" large rounded depressed>
-      <slot/>
+  <v-btn
+    :class="btnClass"
+    :color="color"
+    :block="block"
+    :disabled="disabled"
+    large
+    rounded
+    depressed
+  >
+    <slot />
   </v-btn>
 </template>
 <script lang="ts">
@@ -8,11 +16,12 @@ import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class AstraButton extends Vue {
-  @Prop({default: 'white'})!readonly color!: string
-  @Prop({default: false})!readonly block!: boolean
-  @Prop({default: undefined })!readonly fill: boolean | undefined
+  @Prop({ default: 'white' })!readonly color!: string
+  @Prop({ default: false })!readonly block!: boolean
+  @Prop({ default: false })!readonly disabled!: boolean
+  @Prop({ default: undefined })!readonly fill: boolean | undefined
 
-  get btnClass(): string {
+  get btnClass (): string {
     return this.fill !== undefined ? 'flex-fill' : ''
   }
 }

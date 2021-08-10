@@ -8,7 +8,7 @@
         content-class="right-arrow"
         top
       >
-        <template #activator>
+        <template #activator="{ on }">
           <v-btn
             icon
             x-small
@@ -28,14 +28,13 @@
     </div>
     <v-text-field
       rounded
-      :required="required"
       :append-icon="appendIcon"
       :rules="rules"
       :type="typeFormatted"
       :label="label"
       background-color="astraInput--input"
       :value="value"
-      @input="input"
+      @change="change"
       @click:append="showPassword = !showPassword"
     >
       <template v-if="label" #label>
@@ -45,7 +44,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import { Component, Prop, Vue, Emit } from 'nuxt-property-decorator'
 import { mdiInformation } from '@mdi/js'
 import { IAstraInput } from '~/interfaces/base/inputs/AstraInput'
 import { validator, validationRules } from '~/constants/helpers/Validator'
@@ -82,8 +81,9 @@ export default class AstraInput extends Vue {
     return undefined
   }
 
-  input (value): void {
-    console.log(value.match(/([!@$%])/g))
+  @Emit('change')
+  change (value: string): string {
+    return value
   }
 }
 </script>
@@ -95,6 +95,11 @@ export default class AstraInput extends Vue {
     height: 36px;
     background-color: #F3F3FA;
   }
+  .error--text {
+    .astraInput--input {
+      background-color: rgb(255, 102, 131, 0.2);
+    }
+  }
   &--label {
     color: black;
   }
@@ -103,6 +108,9 @@ export default class AstraInput extends Vue {
   }
   &--toolTip--text {
     max-width: 184px;
+  }
+  .v-text-field__details {
+    padding: $text-field-outlined-rounded-padding;
   }
 }
 </style>
