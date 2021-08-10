@@ -1,0 +1,53 @@
+@import "alias";
+
+$btn-text-transform: unset;
+$textarea-min-height: 36px;
+$tooltip-background-color: $indigo_color;
+$tooltip-border-radius: 8px;
+$tooltip-padding-y: 5px;
+$tooltip-padding-x: 16px;
+$tooltip-padding: $tooltip-padding-y $tooltip-padding-x;
+$text-field-active-label-height: 0;
+$tooltip-font-size: 10px;
+$input-top-spacing: 0;
+$text-field-label-active-transform: translateY($input-label-translateY);
+$label-font-size: 14px;
+$body-font-family: 'Inter';
+$material-light: (
+  'background': #FAF3F3,
+  'app-bar': $indigo_color,
+);
+$btn-sizes: (
+  'x-small': 20,
+  'small': 28,
+  'default': 36,
+  'large': 48,
+  'x-large': 52
+);
+$fab-sizes: (
+  'x-small': 20,
+  'small': 28,
+  'default': 36,
+  'large': 48,
+  'x-large': 52
+);
+
+$arrow: 8px;
+
+.v-tooltip__content.menuable__content__active {
+  &.right-arrow {
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: $arrow/2 solid transparent;
+      border-right: $arrow/2 solid transparent;
+      border-top: $arrow solid $tooltip-background-color;
+      bottom: 0 - $arrow;
+      right: $tooltip-padding-x + $arrow + $arrow/2;
+      z-index: 21;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "allowJs": true,
+    "lib": [
+      "esnext",
+      "esnext.asynciterable",
+      "dom"
+    ],
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitThis": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "importsNotUsedAsValues": "preserve",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"]
+    },
+    "types": [
+      "yandex-maps",
+      "@types/node",
+      "@nuxt/types",
+      "@nuxtjs/axios"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "nuxt-community-typescript-template",
+  "description": "A boilerplate to start a Nuxt+TS project quickly",
+  "version": "2.14.12",
+  "private": true,
+  "dependencies": {
+    "@nuxtjs/axios": "^5.12.5",
+    "vuetify": "^2.5.5",
+    "core-js": "^2.0.0",
+    "node-sass": "^5.0.0",
+    "nuxt": "2.14.12",
+    "nuxt-property-decorator": "2.8.8",
+    "postcss-loader": "^5.2.0",
+    "sass-loader": "^10.1.1"
+  },
+  "scripts": {
+    "dev": "node ./node_modules/@nuxt/typescript-runtime/bin/nuxt-ts.js --max_old_space_size=10000",
+    "server": "nuxt-ts --port 3002",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "generate": "nuxt-ts generate",
+    "lint": "eslint --max-warnings 0 --ext .ts,.vue ."
+  },
+  "devDependencies": {
+    "@babel/preset-env": "7.12.17",
+    "@mdi/js": "^5.9.55",
+    "@nuxt/types": "^2.14.12",
+    "@nuxt/typescript-build": "2.0.3",
+    "@nuxt/typescript-runtime": "^2.1.0",
+    "@nuxtjs/eslint-config-typescript": "5.0.0",
+    "eslint": "7.17.0"
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.12.17"
+  }
+}

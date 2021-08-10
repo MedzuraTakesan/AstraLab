@@ -1,5 +1,7 @@
 <template>
-    <Nuxt />
+  <v-app >
+    <Nuxt class="defaultLayer" />
+  </v-app>
 </template>
 
 <script>
@@ -10,3 +12,9 @@ export default class Index extends Vue{
 
 }
 </script>
+
+<style lang="scss">
+  .defaultLayer {
+    padding-top: 50px;
+  }
+</style>

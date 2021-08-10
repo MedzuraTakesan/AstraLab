@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;806&display=swap");
+@import "assets/alias";
+
+.text--astra--indigo {
+  color: #181C43;
+}
+
+.background--astra--white {
+  background: #FFFFFF;
+}
+
+
+.text-offset {
+  padding: 0 $offset;
+}

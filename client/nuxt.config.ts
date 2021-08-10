@@ -23,28 +23,36 @@ const config: NuxtConfig = {
     link: []
   },
   loading: { color: '#0c64c1' },
-  modules: [],
+  modules: [
+    '@nuxtjs/axios'
+  ],
   css: [
+    '~assets/classes.scss'
   ],
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ["~/assets/variables.scss"],
+    treeShake: true,
+    options: {
+      customProperties: true
+    },
     theme: {
-      dark: true,
+      light: true,
+      dark: false,
       themes: {
-        dark: {
+        light: {
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
+          secondary: '#181C43',
+          info: '#1E1A3E',
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: colors.green.accent3,
+          background: '#FAF3F3'
         }
       }
     }
   },
-  plugins: [
-  ],
+  plugins: [],
   axios: {
     proxy: false // Can be also an object with default options
   },
