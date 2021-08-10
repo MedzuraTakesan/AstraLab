@@ -7,12 +7,13 @@
     large
     rounded
     depressed
+    @click="click"
   >
     <slot />
   </v-btn>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import { Component, Prop, Vue, Emit } from 'nuxt-property-decorator'
 
 @Component
 export default class AstraButton extends Vue {
@@ -23,6 +24,11 @@ export default class AstraButton extends Vue {
 
   get btnClass (): string {
     return this.fill !== undefined ? 'flex-fill' : ''
+  }
+
+  @Emit('click')
+  click (): true {
+    return true
   }
 }
 </script>

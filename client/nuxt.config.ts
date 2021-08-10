@@ -52,7 +52,10 @@ const config: NuxtConfig = {
       }
     }
   },
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/notifications-ssr.ts', mode: 'server' },
+    { src: '~/plugins/notifications-client.js', mode: 'client' },
+  ],
   axios: {
     proxy: false // Can be also an object with default options
   },

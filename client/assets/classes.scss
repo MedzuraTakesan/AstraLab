@@ -2,7 +2,7 @@
 @import "assets/alias";
 
 .text--astra--indigo {
-  color: #181C43;
+  color: $indigo_color-2;
 }
 
 .background--astra--white {
@@ -12,4 +12,8 @@
 
 .text-offset {
   padding: 0 $offset;
+}
+
+.v-application .v-application--wrap a {
+  color: $indigo_color-2
 }

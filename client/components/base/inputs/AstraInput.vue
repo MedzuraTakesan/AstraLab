@@ -47,7 +47,7 @@
 import { Component, Prop, Vue, Emit } from 'nuxt-property-decorator'
 import { mdiInformation } from '@mdi/js'
 import { IAstraInput } from '~/interfaces/base/inputs/AstraInput'
-import { validator, validationRules } from '~/constants/helpers/Validator'
+import { validator, validationRules, validateType } from '~/constants/helpers/Validator'
 
 @Component
 export default class AstraInput extends Vue {
@@ -64,7 +64,7 @@ export default class AstraInput extends Vue {
   }
 
   get rules (): validator {
-    return validationRules[this.type]
+    return validationRules[this.type as validateType]
   }
 
   get typeFormatted (): IAstraInput['type'] {
@@ -97,7 +97,7 @@ export default class AstraInput extends Vue {
   }
   .error--text {
     .astraInput--input {
-      background-color: rgb(255, 102, 131, 0.2);
+      background-color: $astra-pink;
     }
   }
   &--label {

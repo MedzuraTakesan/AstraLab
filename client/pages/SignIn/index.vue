@@ -6,16 +6,17 @@
     />
     <astra-form
       v-model="inputs"
-      class="signUp--offset"
+      class="signIn--offset"
+      ref="astraForm"
       @send="onSend"
     >
       <template #button>
-        Sign Up
+        Sign In
       </template>
     </astra-form>
     <span class="text-offset text-center">
-      Already have an account?
-      <a class="text--astra--indigo" href="/signIn">Sign In</a>
+      Don’t have an account yet?
+      <a class="text--astra--indigo" href="/signUp">Sign Up</a>
     </span>
   </div>
 </template>
@@ -27,17 +28,15 @@ import AstraForm from '~/components/base/forms/AstraForm.vue'
 import { IAstraForm } from '~/interfaces/base/form/IAstraForm'
 
 enum INPUTS {
-  FullName,
   Email,
-  Password,
-  RepeatPassword
+  Password
 }
 
 @Component({
   components: { AstraForm, AstraHeader }
 })
 export default class index extends Vue {
-  @Action(ActionType.SIGN_UP) protected signUp;
+  @Action(ActionType.SIGN_IN) protected signIn;
   @State('auth') readonly auth;
 
   @Watch('auth')
@@ -47,13 +46,11 @@ export default class index extends Vue {
     }
   }
 
+  $refs!: {
+    astraForm: AstraForm
+  }
+
   inputs: IAstraForm['inputs'] = [
-    {
-      label: 'Full name',
-      required: true,
-      type: 'fullName',
-      value: 'Enter Name'
-    },
     {
       label: 'Email',
       required: true,
@@ -64,43 +61,29 @@ export default class index extends Vue {
       label: 'Password',
       required: true,
       type: 'password',
-      toolTip: 'Password must contain 8+ symbols, 1 special and 2 capital letters',
-      value: 'asdfgWWW@@@@'
-    },
-    {
-      label: 'Repeat password',
-      type: 'password',
-      required: true,
       value: 'asdfgWWW@@@@'
     }
   ]
 
   onSend (): void {
-    console.log('sad')
-    if (this.inputs[INPUTS.Password].value !== this.inputs[INPUTS.RepeatPassword].value) {
-      this.$notify({
-        group: 'error',
-        text: 'Repeat Password incorrect!'
-      })
-    } else {
-      this.signUp({
-        email: this.inputs[INPUTS.Email].value,
-        password: this.inputs[INPUTS.Password].value,
-        errBack: () => {
-          this.$notify({
-            group: 'error',
-            text: 'Email is busy!'
-          })
-        }
-      })
-    }
+    this.signIn({
+      email: this.inputs[INPUTS.Email].value,
+      password: this.inputs[INPUTS.Password].value,
+      errBack: () => {
+        this.$notify({
+          group: 'error',
+          text: 'Wrong email or password!'
+        })
+        this.$refs?.astraForm?.reset()
+      }
+    })
   }
 }
 </script>
 
 <style lang="scss">
 @import "assets/alias";
-  .signUp--offset {
+  .signIn--offset {
     margin: $signFormOffset;
   }
 </style>

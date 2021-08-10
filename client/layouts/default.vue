@@ -1,14 +1,17 @@
 <template>
-  <v-app >
+  <v-app>
     <Nuxt class="defaultLayer" />
+    <notification-errors/>
   </v-app>
 </template>
 
 <script>
-import {Component, Vue} from "nuxt-property-decorator";
-
-@Component
-export default class Index extends Vue{
+import { Component, Vue } from 'nuxt-property-decorator'
+import NotificationErrors from '~/components/base/notifications/NotificationErrors'
+@Component({
+  components: { NotificationErrors }
+})
+export default class Index extends Vue {
 
 }
 </script>

@@ -10,13 +10,11 @@ export const state = (): RootState => ({
 })
 
 export enum MutationType {
-  CHANGE_AUTH= 'changeDescription',
-  CANCEL_AUTH= 'changeDescription'
+  CHANGE_AUTH= 'changeDescription'
 }
 export enum ActionType {
   SIGN_IN = 'changeDescriptionAction',
   SIGN_UP = 'changeDescriptionAction',
-  SIGN_OUT = 'changeDescriptionAction'
 }
 
 export const mutations: MutationTree<RootState> = {
@@ -24,5 +22,19 @@ export const mutations: MutationTree<RootState> = {
 }
 
 export const actions: ActionTree<RootState, RootState> = {
-
+  [ActionType.SIGN_IN]: ({ commit, dispatch }, { email, password, errBack }: {email: string, password: string, errBack: () => void}) => {
+    if (localStorage.getItem(email) && localStorage.getItem(email) === password) {
+      commit(MutationType.CHANGE_AUTH, true)
+    } else {
+      errBack()
+    }
+  },
+  [ActionType.SIGN_UP]: ({ commit }, { email, password, errBack }: {email: string, password: string, errBack: () => void}) => {
+    if (!localStorage.getItem(email)) {
+      localStorage.setItem(email, password)
+      commit(MutationType.CHANGE_AUTH, true)
+    } else {
+      errBack()
+    }
+  }
 }
